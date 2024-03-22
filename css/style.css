@@ -1,20 +1,66 @@
-div > img {
-  border-radius: 8px;
-  width: 100%;
-  height: auto;
-  box-shadow: 0px 0px 30px #000;
-}
-
-div {
-  display: grid;
-  grid-template-columns:
-  repeat(
-    auto-fit,
-    minmax(150px, 1fr)
-  );
-  gap: 32px;
+body{
+  background-color: black;
 }
 
 h1{
   text-align: center;
+  background-color: rgb(68, 54, 94);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+  flex-basis: 0;
+  margin: 0 1px;
+  transition: all .3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    flex-basis: calc(50% - 2px);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    flex-basis: 100%;
+  }
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  transition: transform .3s ease-in-out;
+}
+
+.image-container:hover img {
+  transform: scale(1.1);
+}
+
+.image-container .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-container:hover .info {
+  bottom: 50%;
+  transform: translateY(50%);
+  opacity: 1;
 }
